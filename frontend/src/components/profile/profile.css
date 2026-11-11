@@ -1,0 +1,744 @@
+/* TechNeeds 2.0 AI Profile Styles */
+
+.tn-profile-page {
+  padding: 3rem 1.5rem 6rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   1. DEVELOPER IDENTITY HERO
+   ========================================================================== */
+.tn-identity-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, rgba(17, 26, 48, 0.8), rgba(12, 18, 34, 0.95));
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 35px rgba(99, 102, 241, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .tn-identity-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.tn-identity-left {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .tn-identity-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* AI Avatar */
+.tn-avatar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.tn-avatar-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(#6366F1, #22D3EE, #8B5CF6, #6366F1);
+  animation: spin 8s linear infinite;
+  opacity: 0.85;
+}
+
+.tn-avatar-img {
+  position: relative;
+  z-index: 2;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 3px solid #070B14;
+  object-fit: cover;
+}
+
+.tn-avatar-status-dot {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  z-index: 3;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #10B981;
+  border: 2px solid #070B14;
+  box-shadow: 0 0 10px #10B981;
+}
+
+/* Info */
+.tn-identity-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.tn-identity-top-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.tn-dev-name {
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+}
+
+.tn-dev-headline {
+  font-size: 1rem;
+  color: #22D3EE;
+  font-weight: 600;
+}
+
+.tn-dev-meta {
+  font-size: 0.8125rem;
+  color: #94A3B8;
+  margin-top: 0.2rem;
+}
+
+/* Level Progress Bar */
+.tn-level-progress-wrap {
+  margin-top: 0.75rem;
+  max-width: 380px;
+}
+
+.tn-level-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #CBD5E1;
+  margin-bottom: 0.35rem;
+}
+
+.tn-level-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.tn-level-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #6366F1, #22D3EE);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
+  transition: width 0.6s ease;
+}
+
+/* Quick Stats Bar */
+.tn-identity-stats {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.tn-id-stat {
+  background: rgba(12, 18, 34, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.75rem 1.2rem;
+  text-align: center;
+  min-width: 100px;
+}
+
+.tn-id-stat-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.tn-id-stat-lbl {
+  font-size: 0.6875rem;
+  color: #94A3B8;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.15rem;
+}
+
+.tn-identity-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+/* ==========================================================================
+   2. SKILL GALAXY VISUALIZATION
+   ========================================================================== */
+.tn-galaxy-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 20px;
+  padding: 1.75rem;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.tn-galaxy-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tn-galaxy-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tn-galaxy-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.tn-galaxy-content {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .tn-galaxy-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tn-galaxy-canvas-wrap {
+  background: #080C17;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.tn-galaxy-svg {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+}
+
+.tn-orbit-ring {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-dasharray: 4 4;
+}
+
+.tn-constellation-line {
+  stroke-width: 1.5;
+  stroke-opacity: 0.35;
+  transition: all 0.3s ease;
+}
+
+.tn-constellation-line.active {
+  stroke-opacity: 0.85;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.tn-perimeter-line {
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+/* Nexus Node */
+.tn-nexus-pulse {
+  fill: rgba(99, 102, 241, 0.2);
+  animation: pulseSubtle 3s infinite;
+}
+
+.tn-nexus-core {
+  fill: #16203B;
+  stroke: #6366F1;
+  stroke-width: 2.5;
+}
+
+.tn-nexus-text {
+  fill: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
+  font-family: var(--font-sans);
+}
+
+.tn-nexus-sub {
+  fill: #22D3EE;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-family: var(--font-sans);
+}
+
+/* Skill Nodes */
+.tn-skill-node-group {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.tn-skill-node-group:hover .tn-node-glow {
+  opacity: 0.5;
+}
+
+.tn-node-body {
+  fill: #0C1222;
+  stroke-width: 2;
+  transition: all 0.2s ease;
+}
+
+.tn-skill-node-group.selected .tn-node-body {
+  stroke-width: 3.5;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.tn-node-score {
+  fill: #FFFFFF;
+  font-size: 9px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  pointer-events: none;
+}
+
+.tn-node-label {
+  fill: #CBD5E1;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  pointer-events: none;
+}
+
+/* Inspector */
+.tn-skill-inspector {
+  background: rgba(17, 26, 48, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.tn-inspector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.tn-inspector-score {
+  font-size: 0.9375rem;
+  font-weight: 800;
+}
+
+.tn-inspector-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.tn-inspector-tag {
+  font-size: 0.8125rem;
+  color: #94A3B8;
+  margin-bottom: 1rem;
+}
+
+.tn-progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.tn-progress-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
+.tn-inspector-insights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.tn-insight-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.8125rem;
+}
+
+.tn-insight-lbl {
+  color: #64748B;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+}
+
+.tn-insight-val {
+  color: #CBD5E1;
+  line-height: 1.5;
+}
+
+.tn-inspector-btn {
+  width: 100%;
+  padding: 0.65rem;
+  font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   3. AI GROWTH COACH SECTION
+   ========================================================================== */
+.tn-coach-section {
+  margin-bottom: 3rem;
+}
+
+.tn-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 800px) {
+  .tn-coach-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tn-coach-card {
+  padding: 1.5rem;
+}
+
+.tn-coach-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tn-coach-card-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.tn-coach-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tn-coach-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #CBD5E1;
+  line-height: 1.5;
+}
+
+.tn-coach-rec-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tn-rec-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #F8FAFC;
+}
+
+.tn-rec-reason {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   4. DEVELOPER JOURNEY TIMELINE
+   ========================================================================== */
+.tn-timeline-section {
+  margin-bottom: 3rem;
+}
+
+.tn-timeline-wrapper {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(99, 102, 241, 0.25);
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.tn-timeline-node {
+  position: relative;
+}
+
+.tn-timeline-dot {
+  position: absolute;
+  left: calc(-2rem - 6px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #6366F1;
+  border: 2px solid #070B14;
+  box-shadow: 0 0 10px #6366F1;
+}
+
+.tn-timeline-card {
+  padding: 1.25rem 1.5rem;
+}
+
+.tn-timeline-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  font-size: 0.75rem;
+  color: #94A3B8;
+}
+
+.tn-timeline-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.tn-timeline-desc {
+  font-size: 0.8125rem;
+  color: #CBD5E1;
+  margin-top: 0.35rem;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   5. ACHIEVEMENTS & BADGES
+   ========================================================================== */
+.tn-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 900px) {
+  .tn-badges-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .tn-badges-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tn-badge-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+}
+
+.tn-badge-card.unearned {
+  opacity: 0.45;
+  filter: grayscale(1);
+}
+
+.tn-badge-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tn-badge-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.tn-badge-desc {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   6. PROJECT PORTFOLIO
+   ========================================================================== */
+.tn-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .tn-projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tn-project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.tn-project-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.tn-project-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.4rem;
+}
+
+.tn-project-desc {
+  font-size: 0.8125rem;
+  color: #94A3B8;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.tn-project-links {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tn-project-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #22D3EE;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+}
+
+.tn-project-link-btn:hover {
+  background: rgba(34, 211, 238, 0.16);
+}
+
+/* ==========================================================================
+   7. SHARE MODAL
+   ========================================================================== */
+.tn-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 11, 20, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.tn-modal-card {
+  background: #0C1222;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 20px;
+  max-width: 540px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(99, 102, 241, 0.2);
+}
+
+.tn-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.tn-modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.tn-share-preview-card {
+  background: #070B14;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tn-share-url-box {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tn-share-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.8125rem;
+  color: #CBD5E1;
+  font-family: var(--font-mono);
+}
+
+.tn-privacy-note {
+  font-size: 0.75rem;
+  color: #34D399;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
