@@ -38,7 +38,7 @@ backend/services          scoring, leaderboard, access, validate, credentials, b
 backend/models            Admin, Program, Mentor, Mentee, Resource, Quiz, QuizSubmission, ProfileSnapshot, Counter
 backend/scripts           seed, dev-mem, dev-persist, persistence-check, smoke
 docs/evidence/phase0..6   test logs, walkthrough logs, screenshots, a11y and keyboard reports
-render.yaml               Blueprint: techneeds-api, techneeds-web, techneeds-workflows
+render.yaml               Blueprint: techneeds-mongo, techneeds-api, techneeds-web, techneeds-workflows
 ```
 
 ## Rules the code follows
@@ -94,7 +94,7 @@ cd frontend && npm ci && npm run dev            # http://localhost:3000
 **Environment variables:** names only. Full list in `backend/.env.example` and
 `frontend/.env.example`.
 
-- **Backend:** `MONGO_URI`, `JWT_SECRET`, `PORT`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`,
+- **Backend:** `MONGO_URI` (or Render-provided `MONGO_HOST`, `MONGO_USER`, `MONGO_PASSWORD`), `JWT_SECRET`, `PORT`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`,
   `CORS_ORIGIN`, `SEED_DEMO`, `GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, `PROFILE_ENGINE`,
   `RENDER_API_KEY`, `RENDER_WORKFLOW_SLUG`, `RENDER_USE_LOCAL_DEV`.
 - **Frontend:** `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_DEMO_LOGINS`.
@@ -104,7 +104,7 @@ cd frontend && npm ci && npm run dev            # http://localhost:3000
 
 | Check | Result |
 |---|---|
-| Backend tests (`cd backend && npm test`) | 69/69 pass |
+| Backend tests (`cd backend && npm test`) | 72/72 pass |
 | End-to-end browser walkthrough (admin → mentor → mentee → review → leaderboard → AI profile), plus 15 pages at 375 px | 23/23 steps |
 | axe-core WCAG 2.1 AA, 23 pages × dark/light | 0 violations |
 | Keyboard-only quiz path | 6/6 pass |
@@ -113,13 +113,20 @@ cd frontend && npm ci && npm run dev            # http://localhost:3000
 
 ## Not done or not verified
 
-- **Render deployment:** not live yet. The plan:
-  - Push `reimagathon` to the team's GitHub repo on its own branch, leaving its `main`
-    untouched.
-  - Deploy with `render.yaml` as a Blueprint, using the team's $50 Render credits.
+- **Render deployment:** not live yet. Current state:
+  - The team's `mansisethi8687-byte/TeechneedsReimagination` repo has the new
+    `reimagathon` branch; `main` is untouched. Local `deploy/reimagathon` is the
+    publishable branch, based on the team's main to exclude old credential-bearing
+    upstream history. Never push the original local history to this public repo.
+  - $50 participant credit has been redeemed in the team's Render workspace.
+  - The selected setup is Starter web/API/MongoDB with a 1 GB database disk.
+    Render generates the MongoDB password and shares it via service references.
+  - Paid-service validation currently reports `need_payment_info`; the workspace
+    needs a payment method despite having credits. No paid services created yet.
   - Prize eligibility for the Render track requires Render Workflows, which `render.yaml`
     includes.
-- **`render blueprints validate`** needs a signed-in Render workspace.
+- **Render CLI** is signed in. The original free-service Blueprint validated;
+  validation of the paid configuration is blocked on workspace payment info.
 - **Claude adapter:** tested against a stub only.
 - **Videos:** watching is self-reported ("Mark as watched").
 - **Quiz drafts:** saved on the device, not the server.

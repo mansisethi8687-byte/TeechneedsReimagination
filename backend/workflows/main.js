@@ -7,13 +7,17 @@
 // snapshot in using the same pipeline the API uses in-process.
 require('dotenv').config();
 const mongoose = require('mongoose');
+const { mongoUri } = require('../config/mongoUri');
 const { task } = require('@renderinc/sdk/workflows');
 const { runSnapshot } = require('../services/profile/generate');
 
 let connecting;
 function connect() {
   if (mongoose.connection.readyState === 1) return Promise.resolve();
-  if (!connecting) connecting = mongoose.connect(process.env.MONGO_URI);
+  if (!connecting) connecting = mongoose.connect(mongoUri()).catch((error) => {
+    connecting = undefined;
+    throw error;
+  });
   return connecting;
 }
 
