@@ -1,0 +1,16 @@
+ 1. health: db connected
+ 2. public stats: 2 programs, 10 mentees, 44 completions
+ 3. admin signed in as admin@techneeds.demo
+ 4. admin created program "Smoke Cohort GE5I" (code SMGE5)
+ 5. admin onboarded mentor; generated password length 12
+ 6. mentor signed in with the generated password
+ 7. mentor added mentee; enrollment number TN-SMGE526-001
+ 8. mentor published a video, a quiz and a project with deadlines and max scores
+ 9. mentee signed in with enrollment number + generated password
+10. mentee completed the video and scored 25/50 on the quiz (1/2 correct)
+11. mentee submitted the project
+12. mentor saw 1 in the review queue and scored it 85
+13. mentee dashboard total 130, streak 1; program leaderboard #1 is Smoke Mentee with 130
+14. global top 3: Sana Qureshi 497, Meher Kaur 369, Aanya Gupta 340
+
+Smoke passed against http://localhost:8000

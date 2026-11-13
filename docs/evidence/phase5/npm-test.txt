@@ -1,0 +1,390 @@
+
+> backend@1.0.0 test
+> node --test --test-concurrency=1 test/*.test.js
+
+TAP version 13
+# Admin account created for admin@test.io
+# Subtest: admin routes reject anonymous, mentor and mentee callers
+ok 1 - admin routes reject anonymous, mentor and mentee callers
+  ---
+  duration_ms: 3489.094291
+  ...
+# Subtest: admin login fails with wrong password and works with the right one
+ok 2 - admin login fails with wrong password and works with the right one
+  ---
+  duration_ms: 142.345833
+  ...
+# Subtest: no response anywhere contains a password field
+ok 3 - no response anywhere contains a password field
+  ---
+  duration_ms: 186.888875
+  ...
+# Subtest: mentee passwords are stored as bcrypt hashes
+ok 4 - mentee passwords are stored as bcrypt hashes
+  ---
+  duration_ms: 2.375541
+  ...
+# Subtest: legacy plaintext mentee password still logs in and is upgraded to a hash
+ok 5 - legacy plaintext mentee password still logs in and is upgraded to a hash
+  ---
+  duration_ms: 350.678916
+  ...
+# Subtest: upstream-style tokens (id only, no role) are still accepted
+ok 6 - upstream-style tokens (id only, no role) are still accepted
+  ---
+  duration_ms: 58.091791
+  ...
+# Subtest: a mentee token cannot be used as a mentor token
+ok 7 - a mentee token cannot be used as a mentor token
+  ---
+  duration_ms: 13.31525
+  ...
+# Subtest: program mentee list is no longer readable without auth
+ok 8 - program mentee list is no longer readable without auth
+  ---
+  duration_ms: 6.775167
+  ...
+# Subtest: a mentor from another program cannot read or act on this program
+ok 9 - a mentor from another program cannot read or act on this program
+  ---
+  duration_ms: 2121.12275
+  ...
+# Admin account created for admin@test.io
+# Subtest: A1/A2/A3 admin creates a program, onboards a mentor with generated credentials
+ok 10 - A1/A2/A3 admin creates a program, onboards a mentor with generated credentials
+  ---
+  duration_ms: 4111.956916
+  ...
+# Subtest: M2/M3 enrollment numbers are generated, sequential and unique; passwords shown once
+ok 11 - M2/M3 enrollment numbers are generated, sequential and unique; passwords shown once
+  ---
+  duration_ms: 651.865625
+  ...
+# Subtest: M4/M7 mentor posts a video with deadline and max score; mentee completes it
+ok 12 - M4/M7 mentor posts a video with deadline and max score; mentee completes it
+  ---
+  duration_ms: 24.344709
+  ...
+# Subtest: unknown program returns 404 instead of 500
+ok 13 - unknown program returns 404 instead of 500
+  ---
+  duration_ms: 5.122875
+  ...
+# Subtest: M5 mentor posts a quiz; mentee takes it once; score is scaled to maxScore
+ok 14 - M5 mentor posts a quiz; mentee takes it once; score is scaled to maxScore
+  ---
+  duration_ms: 39.720208
+  ...
+# Subtest: quiz is refused before it opens and after it closes
+ok 15 - quiz is refused before it opens and after it closes
+  ---
+  duration_ms: 19.217167
+  ...
+# Subtest: quiz builder rejects a question without a valid correct option
+ok 16 - quiz builder rejects a question without a valid correct option
+  ---
+  duration_ms: 3.70775
+  ...
+# Subtest: M6 project: cannot be checkbox-completed; submit, review queue, verify with feedback
+ok 17 - M6 project: cannot be checkbox-completed; submit, review queue, verify with feedback
+  ---
+  duration_ms: 169.7615
+  ...
+# Subtest: E2 mentee cannot complete a resource from a program they are not in
+ok 18 - E2 mentee cannot complete a resource from a program they are not in
+  ---
+  duration_ms: 626.639625
+  ...
+# Subtest: E3/E4 dashboard totals match the leaderboard; program filter works
+ok 19 - E3/E4 dashboard totals match the leaderboard; program filter works
+  ---
+  duration_ms: 15.825209
+  ...
+# Subtest: P5 mentee sets interest tags
+ok 20 - P5 mentee sets interest tags
+  ---
+  duration_ms: 5.593125
+  ...
+# Subtest: mentor edits a deadline and deletes a resource; totals stay consistent
+ok 21 - mentor edits a deadline and deletes a resource; totals stay consistent
+  ---
+  duration_ms: 63.737959
+  ...
+# Subtest: public stats and health
+ok 22 - public stats and health
+  ---
+  duration_ms: 9.591167
+  ...
+# Admin account created for admin@test.io
+# Subtest: quiz: no answer key reaches the mentee while the quiz is open, even after submitting
+ok 23 - quiz: no answer key reaches the mentee while the quiz is open, even after submitting
+  ---
+  duration_ms: 3322.4855
+  ...
+# Subtest: quiz: mentor can keep answers hidden even after it closes
+ok 24 - quiz: mentor can keep answers hidden even after it closes
+  ---
+  duration_ms: 31.160541
+  ...
+# Subtest: quiz: every question must be answered with a real option
+ok 25 - quiz: every question must be answered with a real option
+  ---
+  duration_ms: 42.503708
+  ...
+# Subtest: quiz: two simultaneous submissions score exactly once
+ok 26 - quiz: two simultaneous submissions score exactly once
+  ---
+  duration_ms: 273.51225
+  ...
+# Subtest: quiz: deadline enforced on the server (before open, after close)
+ok 27 - quiz: deadline enforced on the server (before open, after close)
+  ---
+  duration_ms: 40.72625
+  ...
+# Subtest: quiz: after the first attempt, max score and opening time are frozen; questions never change
+ok 28 - quiz: after the first attempt, max score and opening time are frozen; questions never change
+  ---
+  duration_ms: 52.57275
+  ...
+# Subtest: video: completion persists, late penalty is 1 point per full day, no double scoring
+ok 29 - video: completion persists, late penalty is 1 point per full day, no double scoring
+  ---
+  duration_ms: 25.124625
+  ...
+# Subtest: project: validation, optional live link, resubmit until reviewed, then final
+ok 30 - project: validation, optional live link, resubmit until reviewed, then final
+  ---
+  duration_ms: 92.133333
+  ...
+# Subtest: permissions: mentees only see their own program; roles are not interchangeable
+ok 31 - permissions: mentees only see their own program; roles are not interchangeable
+  ---
+  duration_ms: 22.288959
+  ...
+# Subtest: leaderboard formula: score, then who reached it first, then account order
+ok 32 - leaderboard formula: score, then who reached it first, then account order
+  ---
+  duration_ms: 12.566833
+  ...
+# Subtest: leaderboard API: updates after grading, highlights by id, movement only with history
+ok 33 - leaderboard API: updates after grading, highlights by id, movement only with history
+  ---
+  duration_ms: 878.56325
+  ...
+# Subtest: dashboard rank agrees with the leaderboard
+ok 34 - dashboard rank agrees with the leaderboard
+  ---
+  duration_ms: 21.37025
+  ...
+# Subtest: facts
+    # Subtest: points count only work that is done or already due
+    ok 1 - points count only work that is done or already due
+      ---
+      duration_ms: 1.251916
+      ...
+    # Subtest: deadlines, quizzes and projects come from the records
+    ok 2 - deadlines, quizzes and projects come from the records
+      ---
+      duration_ms: 0.128667
+      ...
+    # Subtest: topic mastery = earned / available per tag, strongest and weakest
+    ok 3 - topic mastery = earned / available per tag, strongest and weakest
+      ---
+      duration_ms: 0.124083
+      ...
+    # Subtest: open work excludes closed quizzes and is soonest first
+    ok 4 - open work excludes closed quizzes and is soonest first
+      ---
+      duration_ms: 0.117792
+      ...
+    # Subtest: mentor facts: review turnaround, feedback rate, pending, inactivity
+    ok 5 - mentor facts: review turnaround, feedback rate, pending, inactivity
+      ---
+      duration_ms: 12.059458
+      ...
+    1..5
+ok 35 - facts
+  ---
+  duration_ms: 15.0685
+  type: 'suite'
+  ...
+# Subtest: badges and avatar
+    # Subtest: every badge states its evidence
+    ok 1 - every badge states its evidence
+      ---
+      duration_ms: 0.492125
+      ...
+    # Subtest: avatar is deterministic, data-driven and escapes topic names
+    ok 2 - avatar is deterministic, data-driven and escapes topic names
+      ---
+      duration_ms: 1.422209
+      ...
+    # Subtest: avatar draws a full ring at 100% and nothing at 0%
+    ok 3 - avatar draws a full ring at 100% and nothing at 0%
+      ---
+      duration_ms: 0.277
+      ...
+    1..3
+ok 36 - badges and avatar
+  ---
+  duration_ms: 2.692458
+  type: 'suite'
+  ...
+# Subtest: writers
+    # Subtest: rules writer cites facts and only recommends real open resources
+    ok 1 - rules writer cites facts and only recommends real open resources
+      ---
+      duration_ms: 0.695792
+      ...
+    # Subtest: the LLM sees no email, enrollment number or surname
+    ok 2 - the LLM sees no email, enrollment number or surname
+      ---
+      duration_ms: 0.268834
+      ...
+    # Subtest: validation drops recommendations that point at invented resources
+    ok 3 - validation drops recommendations that point at invented resources
+      ---
+      duration_ms: 3.185583
+      ...
+    # Subtest: gemini adapter: parses JSON output and records the model
+    ok 4 - gemini adapter: parses JSON output and records the model
+      ---
+      duration_ms: 1.045542
+      ...
+    # Subtest: grounding check flags numbers that are not in the facts
+    ok 5 - grounding check flags numbers that are not in the facts
+      ---
+      duration_ms: 0.284459
+      ...
+    # Subtest: gemini adapter: tries the next model when one is overloaded, sends low thinking
+    ok 6 - gemini adapter: tries the next model when one is overloaded, sends low thinking
+      ---
+      duration_ms: 0.467459
+      ...
+    # Subtest: any LLM failure falls back to the rules engine and says why
+    ok 7 - any LLM failure falls back to the rules engine and says why
+      ---
+      duration_ms: 158.761083
+      ...
+    # Subtest: claude adapter: uses structured output from the official SDK
+    ok 8 - claude adapter: uses structured output from the official SDK
+      ---
+      duration_ms: 1.137917
+      ...
+    1..8
+ok 37 - writers
+  ---
+  duration_ms: 166.251958
+  type: 'suite'
+  ...
+# Subtest: API and runners (seeded cohort)
+    # Subtest: mentee generates their own profile in-process; numbers match the dashboard
+    ok 1 - mentee generates their own profile in-process; numbers match the dashboard
+      ---
+      duration_ms: 68.437208
+      ...
+    # Subtest: regenerating without new activity reuses; new activity produces a new profile
+    ok 2 - regenerating without new activity reuses; new activity produces a new profile
+      ---
+      duration_ms: 89.529792
+      ...
+    # Subtest: access: own mentor yes, other program no, peers no, admin yes
+    ok 3 - access: own mentor yes, other program no, peers no, admin yes
+      ---
+      duration_ms: 60.888625
+      ...
+    # Subtest: mentor profile: reviews and cohort facts
+    ok 4 - mentor profile: reviews and cohort facts
+      ---
+      duration_ms: 18.395417
+      ...
+    # Subtest: render workflow runner: queue, task run, poll, ready
+    ok 5 - render workflow runner: queue, task run, poll, ready
+      ---
+      duration_ms: 28.954
+      ...
+    # Subtest: render workflow failures fall back to in-process and say why
+    ok 6 - render workflow failures fall back to in-process and say why
+      ---
+      duration_ms: 37.174375
+      ...
+    # Subtest: GET returns the latest ready profile and the pipeline in use
+    ok 7 - GET returns the latest ready profile and the pipeline in use
+      ---
+      duration_ms: 11.85425
+      ...
+    1..7
+ok 38 - API and runners (seeded cohort)
+  ---
+  duration_ms: 3469.299125
+  type: 'suite'
+  ...
+# Subtest: successful logins are never limited (a whole lab can share one IP)
+ok 39 - successful logins are never limited (a whole lab can share one IP)
+  ---
+  duration_ms: 78.172
+  ...
+# Subtest: repeated failures lock that account, not other accounts
+ok 40 - repeated failures lock that account, not other accounts
+  ---
+  duration_ms: 6.384458
+  ...
+# Subtest: spraying many accounts from one IP hits the per-IP ceiling
+ok 41 - spraying many accounts from one IP hits the per-IP ceiling
+  ---
+  duration_ms: 8.04925
+  ...
+# Subtest: seed refuses to overwrite existing data without --reset
+ok 42 - seed refuses to overwrite existing data without --reset
+  ---
+  duration_ms: 2320.361625
+  ...
+# Subtest: every seeded account can sign in
+ok 43 - every seeded account can sign in
+  ---
+  duration_ms: 2960.558417
+  ...
+# Subtest: the demo has something live to show in every panel
+ok 44 - the demo has something live to show in every panel
+  ---
+  duration_ms: 677.684625
+  ...
+# Subtest: late penalty is one point per full day late (upstream rule)
+ok 45 - late penalty is one point per full day late (upstream rule)
+  ---
+  duration_ms: 1.309333
+  ...
+# Subtest: quiz grading matches by id or index and scales to maxScore
+ok 46 - quiz grading matches by id or index and scales to maxScore
+  ---
+  duration_ms: 0.662292
+  ...
+# Subtest: streak continues on consecutive days and resets after a gap
+ok 47 - streak continues on consecutive days and resets after a gap
+  ---
+  duration_ms: 1.600833
+  ...
+# Subtest: program codes
+ok 48 - program codes
+  ---
+  duration_ms: 0.340791
+  ...
+# Subtest: generated passwords avoid look-alike characters
+ok 49 - generated passwords avoid look-alike characters
+  ---
+  duration_ms: 2.0015
+  ...
+# Subtest: verifyPassword handles bcrypt, legacy plaintext and garbage
+ok 50 - verifyPassword handles bcrypt, legacy plaintext and garbage
+  ---
+  duration_ms: 17.927834
+  ...
+1..50
+# tests 69
+# suites 4
+# pass 69
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 31788.119458

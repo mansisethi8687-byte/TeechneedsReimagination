@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 
 const AnswerSchema = new mongoose.Schema({
   questionIndex: Number, // Index of the question in the quiz
-  selectedOptionIndex: Number
+  selectedOptionIndex: Number,
+  // Added: the client sends question ids; keep them for review.
+  questionId: String,
+  correct: Boolean,
 });
 
 const QuizSubmissionSchema = new mongoose.Schema({
@@ -11,6 +14,9 @@ const QuizSubmissionSchema = new mongoose.Schema({
   resource: { type: mongoose.Schema.Types.ObjectId, ref: 'Resource', required: true },
   answers: [AnswerSchema],
   score: { type: Number, default: 0 },
+  // Added: raw marks before scaling to the resource's maxScore.
+  rawScore: { type: Number, default: 0 },
+  totalMarks: { type: Number, default: 0 },
   submittedAt: { type: Date, default: Date.now }
 }, { timestamps: true });
 

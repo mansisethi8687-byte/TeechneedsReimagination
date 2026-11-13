@@ -1,0 +1,8 @@
+PASS  signed in using only Tab, typing and Enter
+PASS  opened "React mental model" from Next up with Enter
+PASS  Start quiz with Enter; focus moved to question 1
+PASS  chose an answer with the arrow keys (progress shows 1 answered)
+PASS  Next with Enter; focus moved to question 2
+PASS  focused controls show a visible focus ring (solid 2px)
+
+Keyboard check passed (quiz left unsubmitted; answers are only a device draft)

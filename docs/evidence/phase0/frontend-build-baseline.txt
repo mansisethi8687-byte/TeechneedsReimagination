@@ -1,0 +1,38 @@
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+
+added 137 packages in 36s
+   ▲ Next.js 15.3.0
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 31.0s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/14) ...
+   Generating static pages (3/14) 
+   Generating static pages (6/14) 
+   Generating static pages (10/14) 
+ ✓ Generating static pages (14/14)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    23.2 kB         130 kB
+├ ○ /_not-found                            977 B         102 kB
+├ ○ /admin                               1.53 kB         103 kB
+├ ○ /dashboard                           2.34 kB         124 kB
+├ ○ /eventspage                          4.01 kB         105 kB
+├ ○ /faq                                   813 B         102 kB
+├ ○ /leaderboard                           659 B         122 kB
+├ ○ /mentee                              5.06 kB         126 kB
+├ ○ /mentor                              3.93 kB         125 kB
+├ ○ /profile                                4 kB         105 kB
+├ ○ /team                                  192 B         101 kB
+└ ○ /techboard                             732 B         102 kB
++ First Load JS shared by all             101 kB
+  ├ chunks/4bd1b696-2581ea8f93aa337b.js  53.2 kB
+  ├ chunks/684-0dad09ecdb2f00ad.js       45.9 kB
+  └ other shared chunks (total)          2.08 kB
+
+
+○  (Static)  prerendered as static content
+

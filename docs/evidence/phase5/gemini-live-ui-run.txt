@@ -1,0 +1,14 @@
+mentee {"status":"ready","runner":"render-workflow","runId":"trn-dbrho1bf81fdeg9sgfv0","engine":"gemini","model":"gemini-3.5-flash-lite","attempts":["gemini-3.5-flash-lite ok"],"ungrounded":[],"fallback":null,"summary":"You have earned 310 of 540 points in your Web Development program and maintained a 100% on-time deadline rate across 5 completed items. Your strongest evidence of progress is your 100% mastery in JavaScript, along with an average accuracy of 100% on your 2 taken quizzes. With a current streak of 5 days, you are building consistent habits as you work through your remaining modules."}
+mentor {"status":"ready","runner":"render-workflow","runId":"trn-dbrho2bf81fdeg9sgfvg","engine":"gemini","model":"gemini-3.5-flash-lite","attempts":["gemini-3.5-flash-lite ok"],"ungrounded":[],"fallback":null,"summary":"Ishita guides 6 mentees through the Web Development program, achieving an 86 percent cohort completion rate. With expertise in react, node, and system design, Ishita maintains a median turnaround time of 24 hours for reviews and has a 100 percent feedback rate across 2 completed reviews."}
+saved gemini-mentee-profile
+saved gemini-mentee-profile-light
+saved gemini-mentor-profile
+saved gemini-mentor-views-mentee
+saved gemini-mentee-profile-375
+14:18:57 mentor ready render-workflow trn-dbrhokjf81fdeg9sgg0g gemini gemini-3.5-flash-lite ungrounded: [] 
+14:18:47 mentee ready render-workflow trn-dbrhohrf81fdeg9sgg00 gemini gemini-3.6-flash ungrounded: ["14"] 
+14:17:45 mentor ready render-workflow trn-dbrho2bf81fdeg9sgfvg gemini gemini-3.5-flash-lite ungrounded: [] 
+14:17:41 mentee ready render-workflow trn-dbrho1bf81fdeg9sgfv0 gemini gemini-3.5-flash-lite ungrounded: [] 
+14:15:54 mentee ready render-workflow trn-dbrhn6jf81fdbjmh94dg gemini gemini-3.5-flash-lite ungrounded: [] 
+14:14:04 mentee ready render-workflow trn-dbrhmb3f81fd85guhd9g rules - ungrounded: [] fallback: gemini unavailable: The operation was aborted due to timeout
+re-check of the live run with the fixed checker: []

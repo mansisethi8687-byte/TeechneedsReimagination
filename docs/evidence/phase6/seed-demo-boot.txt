@@ -1,0 +1,2 @@
+boot 1 | log: SEED_DEMO: empty database, seeded the demo cohort. | stats {"programs":2,"mentors":2,"mentees":10,"resources":14,"completions":44} | admin login 200
+boot 2 | log: (no seed message) | stats {"programs":2,"mentors":2,"mentees":10,"resources":14,"completions":44} | admin login 200

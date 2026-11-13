@@ -1,0 +1,7 @@
+m-375-mentor-studio: horizontal overflow 0px
+m-375-workspace-mentees: horizontal overflow 0px
+m-375-workspace-resources: horizontal overflow 0px
+m-375-quiz-builder: horizontal overflow 0px
+m-375-review: horizontal overflow 0px
+m-375-admin-program: horizontal overflow 0px
+m-375-admin-mentors: horizontal overflow 0px

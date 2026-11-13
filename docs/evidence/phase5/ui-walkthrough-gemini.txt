@@ -1,0 +1,40 @@
+ 1. admin signed in through /login
+ 2. admin created "Cloud Computing axxs"
+ 3. admin onboarded a mentor; credentials shown once
+ 4. mentor signed in with the generated password
+ 5. mentor enrolled a mentee; generated enrollment number TN-CCA26-001
+ 6. mentor published a video, a project and a 2-question quiz
+ 7. mentor locked and unlocked the video from the row menu
+ 8. mentee signed in with enrollment number + generated password; Today lists the 3 new items
+ 9. mentee watched the video: completion saved, 40/40 points
+10. mentee took the quiz: no answer key in the browser, server graded it 100/100, saved, answers hidden until close
+11. reloading the quiz shows the saved attempt; no second attempt offered
+12. project form validates before sending (empty repository link rejected)
+13. mentee submitted the project; status shows Awaiting review
+14. mentor scored the project 170/200 with feedback
+15. mentee sees Reviewed 170/200 and the mentor's feedback; the project is final
+16. activity history lists video, quiz, submission and review, newest first
+17. leaderboard updated: 40 + 100 + 170 = 310 points, own row highlighted
+18. mentee profile generated from the record (Render Workflow): 310 points, badges, avatar, recommendations
+19. mentor opens the mentee's profile from the program workspace
+20. mentor's own profile generated: mentees, published resources, reviews
+21. leaderboard is public; anonymous visitors see rankings without signing in
+22. admin console still lists the new program and mentor
+    375px  mentee /dashboard                         overflow 0px
+    375px  mentee /dashboard/programs/:program       overflow 0px
+    375px  mentee /dashboard/resources/:id           overflow 0px
+    375px  mentee /dashboard/resources/:id           overflow 0px
+    375px  mentee /dashboard/resources/:id           overflow 0px
+    375px  mentee /dashboard/activity                overflow 0px
+    375px  mentee /dashboard/profile                 overflow 0px
+    375px  mentee /leaderboard?program=:program      overflow 0px
+    375px  mentor /mentor                            overflow 0px
+    375px  mentor /mentor/programs/:program          overflow 0px
+    375px  mentor /mentor/review                     overflow 0px
+    375px  mentor /mentor/profile                    overflow 0px
+    375px  admin  /admin                             overflow 0px
+    375px  admin  /admin/programs/:program           overflow 0px
+    375px  admin  /admin/mentors                     overflow 0px
+23. all 15 pages fit 375px with no horizontal overflow
+
+UI walkthrough passed against http://localhost:3301 (23 steps, no console errors, no failed requests)

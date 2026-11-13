@@ -1,0 +1,36 @@
+POST -> 202 queued render-workflow trn-dbrhn6jf81fdbjmh94dg
+final: {"status":"ready","runner":"render-workflow","runId":"trn-dbrhn6jf81fdbjmh94dg","engine":"gemini","model":"gemini-3.5-flash-lite","modelAttempts":["gemini-3.5-flash-lite ok"],"fallbackReason":null,"dropped":0,"seconds":5}
+
+SUMMARY: You are making steady progress in your Web Development cohort at TechNeeds, earning 310 points out of 540 and maintaining a 100 percent on-time deadline rate. Your quiz accuracy stands at 100 percent across 2 taken quizzes, showing strong foundational knowledge in JavaScript and React. However, you have 2 overdue items to address and need to focus on completing your project work.
+STRENGTHS: [
+ "You achieved 100 percent accuracy across your 2 taken quizzes.",
+ "You maintained a 100 percent on-time deadline rate for your 5 completed items.",
+ "You achieved 100 percent mastery in JavaScript across 2 completed items."
+]
+FOCUS: [
+ "Address your 2 overdue items to catch up on your coursework.",
+ "Complete your project assignments, as you currently have 0 reviewed projects.",
+ "Improve your CSS mastery, which currently stands at 33 percent."
+]
+RECS: [
+ {
+  "title": "Semantic HTML and accessible forms",
+  "why": "This will help you address your weakest topic of accessibility and clear your overdue items.",
+  "resourceId": "6af6d52ac0003f83d24cf47f",
+  "resourceIsReal": true
+ },
+ {
+  "title": "Personal portfolio, deployed",
+  "why": "This project will help you build experience in deployment and CSS.",
+  "resourceId": "6af6d52ac0003f83d24cf496",
+  "resourceIsReal": true
+ },
+ {
+  "title": "React mental model",
+  "why": "This quiz will build on your existing React mastery.",
+  "resourceId": "6af6d52bc0003f83d24cf49a",
+  "resourceIsReal": true
+ }
+]
+
+FACTS GIVEN TO THE MODEL (key numbers): {"points":{"earned":310,"available":540,"rate":57},"deadlines":{"onTime":5,"late":0,"onTimeRate":100,"overdue":2,"missedQuizzes":0},"quizAccuracy":100,"standing":{"rank":4,"of":6,"movement":-1},"strongest":{"topic":"javascript","mastery":100,"done":2,"total":2},"weakest":{"topic":"accessibility","mastery":0,"done":0,"total":1},"interests":["backend","databases"]}

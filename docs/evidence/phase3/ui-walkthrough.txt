@@ -1,0 +1,16 @@
+ 1. admin signed in through /login
+ 2. admin created "Cloud Computing wgzd" (code suggested: CCW)
+ 3. admin onboarded mentor; credential card shows Email, Password, Sign in at
+ 4. mentor is listed on the program page
+ 5. mentor signed in with the generated password
+ 6. mentor added a mentee; generated enrollment number TN-CCW26-001
+ 7. mentor published a video with deadline and max score
+ 8. mentor published a project
+ 9. mentor built a 2-question quiz in the builder and published it
+10. mentor locked a resource from the row menu
+11. mentee signed in with the generated credentials (API) and submitted the project
+12. mentor scored the project 170/200 with feedback; it left the queue
+13. mentee's dashboard now shows the project verified at 170 with feedback "Clean multi-stage build. Add a non-root user next time."
+14. admin sees the new mentor and program in the console
+
+UI walkthrough passed against http://localhost:3301 (14 steps, no console errors)

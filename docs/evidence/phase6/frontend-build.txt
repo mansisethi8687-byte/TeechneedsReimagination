@@ -1,0 +1,51 @@
+   ▲ Next.js 15.3.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 8.0s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/23) ...
+   Generating static pages (5/23) 
+   Generating static pages (11/23) 
+   Generating static pages (17/23) 
+ ✓ Generating static pages (23/23)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    5.23 kB         115 kB
+├ ○ /_not-found                            981 B         102 kB
+├ ○ /admin                               5.92 kB         127 kB
+├ ○ /admin/mentors                       4.75 kB         126 kB
+├ ƒ /admin/programs/[id]                  4.3 kB         128 kB
+├ ○ /apple-icon.png                          0 B            0 B
+├ ○ /dashboard                           5.37 kB         124 kB
+├ ○ /dashboard/activity                  5.38 kB         120 kB
+├ ○ /dashboard/profile                     874 B         128 kB
+├ ƒ /dashboard/programs/[id]             3.86 kB         123 kB
+├ ƒ /dashboard/resources/[id]            11.7 kB         130 kB
+├ ○ /eventspage                          1.82 kB         106 kB
+├ ○ /faq                                 1.82 kB         106 kB
+├ ○ /icon.png                                0 B            0 B
+├ ○ /leaderboard                          7.8 kB         122 kB
+├ ○ /login                               7.88 kB         118 kB
+├ ○ /mentee                                142 B         101 kB
+├ ○ /mentor                              6.85 kB         121 kB
+├ ƒ /mentor/mentees/[id]                   664 B         128 kB
+├ ○ /mentor/profile                        804 B         128 kB
+├ ƒ /mentor/programs/[id]                9.41 kB         130 kB
+├ ƒ /mentor/programs/[id]/quiz/new       6.15 kB         124 kB
+├ ○ /mentor/review                       5.23 kB         124 kB
+├ ○ /profile                             1.25 kB         102 kB
+├ ○ /team                                  142 B         101 kB
+└ ○ /techboard                           4.28 kB         109 kB
++ First Load JS shared by all             101 kB
+  ├ chunks/1684-364b5867a285b62e.js      45.9 kB
+  ├ chunks/4bd1b696-fb8fd73a82ae83f7.js  53.2 kB
+  └ other shared chunks (total)          1.92 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

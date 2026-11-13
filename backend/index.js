@@ -1,20 +1,29 @@
-require('dotenv').config();
-const express = require('express');
+const { env, assertRuntimeEnv } = require('./config/env');
 const connectDB = require('./config/db');
-const app = express();
-const cors = require('cors');
+const app = require('./app');
+const { ensureAdmin } = require('./services/bootstrap');
 
-// Connect to MongoDB
-connectDB();
+async function start() {
+  assertRuntimeEnv();
+  await connectDB(env.MONGO_URI);
+  // Optional demo data for a fresh deployment (free Render plans have no shell
+  // to run the seed script). Only ever seeds an empty database.
+  if (process.env.SEED_DEMO === 'true') {
+    const Program = require('./models/Program');
+    if ((await Program.estimatedDocumentCount()) === 0) {
+      await require('./scripts/seed').seed();
+      console.log('SEED_DEMO: empty database, seeded the demo cohort.');
+    }
+  }
+  await ensureAdmin({ email: env.ADMIN_EMAIL, password: env.ADMIN_PASSWORD, name: env.ADMIN_NAME });
+  return app.listen(env.PORT, () => console.log(`Server running on port ${env.PORT}`));
+}
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+if (require.main === module) {
+  start().catch((err) => {
+    console.error(err.message);
+    process.exit(1);
+  });
+}
 
-// Routes
-app.use('/api', require('./routes/mentorRoutes')); // All routes under /api
-app.use('/api/m', require('./routes/menteeRoutes'));
-app.get('/', (req, res) => res.send('Mentorship API Running'));
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = { app, start };

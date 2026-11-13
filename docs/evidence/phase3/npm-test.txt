@@ -1,0 +1,186 @@
+
+> backend@1.0.0 test
+> node --test --test-concurrency=1 test/*.test.js
+
+TAP version 13
+# Admin account created for admin@test.io
+# Subtest: admin routes reject anonymous, mentor and mentee callers
+ok 1 - admin routes reject anonymous, mentor and mentee callers
+  ---
+  duration_ms: 2994.410333
+  ...
+# Subtest: admin login fails with wrong password and works with the right one
+ok 2 - admin login fails with wrong password and works with the right one
+  ---
+  duration_ms: 120.418541
+  ...
+# Subtest: no response anywhere contains a password field
+ok 3 - no response anywhere contains a password field
+  ---
+  duration_ms: 153.095125
+  ...
+# Subtest: mentee passwords are stored as bcrypt hashes
+ok 4 - mentee passwords are stored as bcrypt hashes
+  ---
+  duration_ms: 1.445
+  ...
+# Subtest: legacy plaintext mentee password still logs in and is upgraded to a hash
+ok 5 - legacy plaintext mentee password still logs in and is upgraded to a hash
+  ---
+  duration_ms: 236.017333
+  ...
+# Subtest: upstream-style tokens (id only, no role) are still accepted
+ok 6 - upstream-style tokens (id only, no role) are still accepted
+  ---
+  duration_ms: 13.681083
+  ...
+# Subtest: a mentee token cannot be used as a mentor token
+ok 7 - a mentee token cannot be used as a mentor token
+  ---
+  duration_ms: 2.572834
+  ...
+# Subtest: program mentee list is no longer readable without auth
+ok 8 - program mentee list is no longer readable without auth
+  ---
+  duration_ms: 1.613959
+  ...
+# Subtest: a mentor from another program cannot read or act on this program
+ok 9 - a mentor from another program cannot read or act on this program
+  ---
+  duration_ms: 592.863875
+  ...
+# Admin account created for admin@test.io
+# Subtest: A1/A2/A3 admin creates a program, onboards a mentor with generated credentials
+ok 10 - A1/A2/A3 admin creates a program, onboards a mentor with generated credentials
+  ---
+  duration_ms: 2778.002208
+  ...
+# Subtest: M2/M3 enrollment numbers are generated, sequential and unique; passwords shown once
+ok 11 - M2/M3 enrollment numbers are generated, sequential and unique; passwords shown once
+  ---
+  duration_ms: 600.59575
+  ...
+# Subtest: M4/M7 mentor posts a video with deadline and max score; mentee completes it
+ok 12 - M4/M7 mentor posts a video with deadline and max score; mentee completes it
+  ---
+  duration_ms: 23.716333
+  ...
+# Subtest: unknown program returns 404 instead of 500
+ok 13 - unknown program returns 404 instead of 500
+  ---
+  duration_ms: 4.013084
+  ...
+# Subtest: M5 mentor posts a quiz; mentee takes it once; score is scaled to maxScore
+ok 14 - M5 mentor posts a quiz; mentee takes it once; score is scaled to maxScore
+  ---
+  duration_ms: 30.894042
+  ...
+# Subtest: quiz is refused before it opens and after it closes
+ok 15 - quiz is refused before it opens and after it closes
+  ---
+  duration_ms: 17.629
+  ...
+# Subtest: quiz builder rejects a question without a valid correct option
+ok 16 - quiz builder rejects a question without a valid correct option
+  ---
+  duration_ms: 3.748459
+  ...
+# Subtest: M6 project: cannot be checkbox-completed; submit, review queue, verify with feedback
+ok 17 - M6 project: cannot be checkbox-completed; submit, review queue, verify with feedback
+  ---
+  duration_ms: 60.15875
+  ...
+# Subtest: E2 mentee cannot complete a resource from a program they are not in
+ok 18 - E2 mentee cannot complete a resource from a program they are not in
+  ---
+  duration_ms: 604.496917
+  ...
+# Subtest: E3/E4 dashboard totals match the leaderboard; program filter works
+ok 19 - E3/E4 dashboard totals match the leaderboard; program filter works
+  ---
+  duration_ms: 16.273542
+  ...
+# Subtest: P5 mentee sets interest tags
+ok 20 - P5 mentee sets interest tags
+  ---
+  duration_ms: 5.69775
+  ...
+# Subtest: mentor edits a deadline and deletes a resource; totals stay consistent
+ok 21 - mentor edits a deadline and deletes a resource; totals stay consistent
+  ---
+  duration_ms: 55.907708
+  ...
+# Subtest: public stats and health
+ok 22 - public stats and health
+  ---
+  duration_ms: 5.123167
+  ...
+# Subtest: successful logins are never limited (a whole lab can share one IP)
+ok 23 - successful logins are never limited (a whole lab can share one IP)
+  ---
+  duration_ms: 71.540208
+  ...
+# Subtest: repeated failures lock that account, not other accounts
+ok 24 - repeated failures lock that account, not other accounts
+  ---
+  duration_ms: 6.324583
+  ...
+# Subtest: spraying many accounts from one IP hits the per-IP ceiling
+ok 25 - spraying many accounts from one IP hits the per-IP ceiling
+  ---
+  duration_ms: 6.942542
+  ...
+# Subtest: seed refuses to overwrite existing data without --reset
+ok 26 - seed refuses to overwrite existing data without --reset
+  ---
+  duration_ms: 2233.233583
+  ...
+# Subtest: every seeded account can sign in
+ok 27 - every seeded account can sign in
+  ---
+  duration_ms: 1530.989792
+  ...
+# Subtest: the demo has something live to show in every panel
+ok 28 - the demo has something live to show in every panel
+  ---
+  duration_ms: 414.008375
+  ...
+# Subtest: late penalty is one point per full day late (upstream rule)
+ok 29 - late penalty is one point per full day late (upstream rule)
+  ---
+  duration_ms: 1.047
+  ...
+# Subtest: quiz grading matches by id or index and scales to maxScore
+ok 30 - quiz grading matches by id or index and scales to maxScore
+  ---
+  duration_ms: 0.621666
+  ...
+# Subtest: streak continues on consecutive days and resets after a gap
+ok 31 - streak continues on consecutive days and resets after a gap
+  ---
+  duration_ms: 1.072583
+  ...
+# Subtest: program codes
+ok 32 - program codes
+  ---
+  duration_ms: 0.2865
+  ...
+# Subtest: generated passwords avoid look-alike characters
+ok 33 - generated passwords avoid look-alike characters
+  ---
+  duration_ms: 1.990875
+  ...
+# Subtest: verifyPassword handles bcrypt, legacy plaintext and garbage
+ok 34 - verifyPassword handles bcrypt, legacy plaintext and garbage
+  ---
+  duration_ms: 16.210833
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14762.480167

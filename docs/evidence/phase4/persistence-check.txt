@@ -1,0 +1,20 @@
+1. First boot on an empty data directory
+   [boot 1] Empty database: seeded the demo cohort.
+   [boot 1] TechNeeds API (persistent MongoDB at /Users/anmol/Applications/techneeds-reimagathon/backend/.data/persistence-check) on http://localhost:8131
+   wrote: program PERS, mentor, mentee TN-PERS26-001, quiz graded 50/50
+   stats before restart: {"programs":3,"mentors":3,"mentees":11,"resources":15,"completions":45}
+2. Stop the backend process (SIGTERM)
+3. Second boot on the same data directory
+   [boot 2] Existing data found (3 programs): not reseeding.
+   [boot 2] TechNeeds API (persistent MongoDB at /Users/anmol/Applications/techneeds-reimagathon/backend/.data/persistence-check) on http://localhost:8131
+   stats after restart:  {"programs":3,"mentors":3,"mentees":11,"resources":15,"completions":45}
+
+PASS  counts identical after restart
+PASS  generated mentee login still works
+PASS  generated mentor login still works
+PASS  program still there
+PASS  quiz attempt and score persisted
+PASS  mentee total persisted
+PASS  demo seed not re-run over existing data
+
+7/7 persistence checks passed

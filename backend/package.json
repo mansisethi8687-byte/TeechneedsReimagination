@@ -4,19 +4,36 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "dev:mem": "node scripts/dev-mem.js",
+    "seed": "node scripts/seed.js",
+    "test": "node --test --test-concurrency=1 test/*.test.js",
+    "probe": "node scripts/baseline-probe.js",
+    "dev:persist": "node scripts/dev-persist.js",
+    "check:persistence": "node scripts/persistence-check.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "@renderinc/sdk": "^1.8.0",
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.13.2"
+    "mongoose": "^8.13.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^10.4.3",
+    "supertest": "^7.3.2"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

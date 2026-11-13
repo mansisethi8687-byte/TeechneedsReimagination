@@ -1,0 +1,71 @@
+# Render Blueprint for TechNeeds: API, web app and the AI-profile workflow.
+# Region: Singapore (closest to Delhi). Secrets marked `sync: false` are asked
+# for once when the Blueprint is created.
+services:
+  # Express API
+  - type: web
+    name: techneeds-api
+    runtime: node
+    region: singapore
+    plan: free
+    rootDir: backend
+    buildCommand: npm ci --omit=dev
+    startCommand: node index.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20.19.0
+      - key: MONGO_URI            # MongoDB Atlas connection string
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL          # first admin, created on boot if missing
+        sync: false
+      - key: ADMIN_PASSWORD       # at least 10 characters
+        sync: false
+      - key: CORS_ORIGIN          # the web app's URL, e.g. https://techneeds-web.onrender.com
+        sync: false
+      - key: SEED_DEMO            # "true" seeds the demo cohort into an empty database
+        value: "true"
+      - key: GEMINI_API_KEY       # optional: AI-written profiles (rules engine otherwise)
+        sync: false
+      - key: RENDER_API_KEY       # lets the API start Render Workflow task runs
+        sync: false
+      - key: RENDER_WORKFLOW_SLUG
+        fromService:
+          name: techneeds-workflows
+          type: workflow
+          property: slug
+
+  # Next.js web app
+  - type: web
+    name: techneeds-web
+    runtime: node
+    region: singapore
+    plan: free
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.19.0
+      - key: NEXT_PUBLIC_API_URL  # the API's URL, e.g. https://techneeds-api.onrender.com
+        sync: false
+      - key: NEXT_PUBLIC_DEMO_LOGINS
+        value: "1"
+
+  # Render Workflow: generates AI profiles (task `generateProfile`)
+  - type: workflow
+    name: techneeds-workflows
+    runtime: node
+    region: singapore
+    rootDir: backend
+    buildCommand: npm ci --omit=dev
+    startCommand: node workflows/main.js
+    envVars:
+      - key: NODE_VERSION
+        value: 20.19.0
+      - key: MONGO_URI
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false

@@ -1,0 +1,24 @@
+pipeline: {"runner":"render-workflow","engine":"rules","local":true}
+POST generate -> 202 status queued runner render-workflow runId trn-dbrdk5rf81f7ta4n0el0
+  poll: ready
+final: ready runner render-workflow runId trn-dbrdk5rf81f7ta4n0el0 engine rules badges 7 in 1898 ms
+summary: Meher has completed 6 of 9 resources and earned 369 of 500 available points (74%). Currently #2 of 6, up 3 this week. Strongest topic: accessibility (97%). Quiz accuracy averages 53% over 2 quizzes. 67% of work went in on time.
+workflowError: none
+{
+ "id": "trn-dbrdk5rf81f7ta4n0el0",
+ "status": "completed",
+ "input": [
+  "6af6da1639b697ac9621b897"
+ ],
+ "results": [
+  {
+   "badges": 7,
+   "engine": "rules",
+   "snapshotId": "6af6da1639b697ac9621b897",
+   "status": "ready"
+  }
+ ],
+ "retries": 0,
+ "startedAt": "2026-11-13T15:06:23.750012+05:30",
+ "completedAt": "2026-11-13T15:06:24.132467+05:30"
+}
