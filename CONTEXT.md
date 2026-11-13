@@ -38,7 +38,7 @@ backend/services          scoring, leaderboard, access, validate, credentials, b
 backend/models            Admin, Program, Mentor, Mentee, Resource, Quiz, QuizSubmission, ProfileSnapshot, Counter
 backend/scripts           seed, dev-mem, dev-persist, persistence-check, smoke
 docs/evidence/phase0..6   test logs, walkthrough logs, screenshots, a11y and keyboard reports
-render.yaml               Blueprint: techneeds-mongo, techneeds-api, techneeds-web, techneeds-workflows
+render.yaml               Blueprint: techneeds-api, techneeds-web, techneeds-workflows; database on Atlas Free
 ```
 
 ## Rules the code follows
@@ -119,14 +119,13 @@ cd frontend && npm ci && npm run dev            # http://localhost:3000
     publishable branch, based on the team's main to exclude old credential-bearing
     upstream history. Never push the original local history to this public repo.
   - $50 participant credit has been redeemed in the team's Render workspace.
-  - The selected setup is Starter web/API/MongoDB with a 1 GB database disk.
-    Render generates the MongoDB password and shares it via service references.
-  - Paid-service validation currently reports `need_payment_info`; the workspace
-    needs a payment method despite having credits. No paid services created yet.
+  - User explicitly declined adding a payment card. Use free web/API services and
+    MongoDB Atlas Free. The paid configuration was blocked by `need_payment_info`
+    despite the redeemed credits; no paid services were created.
   - Prize eligibility for the Render track requires Render Workflows, which `render.yaml`
     includes.
-- **Render CLI** is signed in. The original free-service Blueprint validated;
-  validation of the paid configuration is blocked on workspace payment info.
+- **Render CLI** is signed in. Free-service Blueprint validation succeeds;
+  actual Workflow deployment/run verification is still pending.
 - **Claude adapter:** tested against a stub only.
 - **Videos:** watching is self-reported ("Mark as watched").
 - **Quiz drafts:** saved on the device, not the server.

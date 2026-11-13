@@ -1,32 +1,14 @@
-# Render Blueprint for TechNeeds: MongoDB, API, web app and AI-profile workflow.
+# Render Blueprint for TechNeeds: free web/API, Atlas database, and AI workflow.
 # Region: Singapore (closest to Delhi). Secrets marked `sync: false` are asked
 # for once when the Blueprint is created.
 services:
-  # Authenticated MongoDB, accessible only on Render's private network.
-  - type: pserv
-    name: techneeds-mongo
-    runtime: image
-    image:
-      url: docker.io/library/mongo:7.0
-    region: singapore
-    plan: starter
-    dockerCommand: mongod --bind_ip_all --wiredTigerCacheSizeGB 0.25
-    disk:
-      name: mongo-data
-      mountPath: /data/db
-      sizeGB: 1
-    envVars:
-      - key: MONGO_INITDB_ROOT_USERNAME
-        value: techneeds
-      - key: MONGO_INITDB_ROOT_PASSWORD
-        generateValue: true
-
   # Express API
   - type: web
     name: techneeds-api
     runtime: node
     region: singapore
-    plan: starter
+    plan: free
+    branch: reimagathon
     rootDir: backend
     buildCommand: npm ci --omit=dev
     startCommand: node index.js
@@ -34,21 +16,8 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20.19.0
-      - key: MONGO_HOST
-        fromService:
-          name: techneeds-mongo
-          type: pserv
-          property: host
-      - key: MONGO_USER
-        fromService:
-          name: techneeds-mongo
-          type: pserv
-          envVarKey: MONGO_INITDB_ROOT_USERNAME
-      - key: MONGO_PASSWORD
-        fromService:
-          name: techneeds-mongo
-          type: pserv
-          envVarKey: MONGO_INITDB_ROOT_PASSWORD
+      - key: MONGO_URI            # MongoDB Atlas Free connection string
+        sync: false
       - key: JWT_SECRET
         generateValue: true
       - key: ADMIN_EMAIL          # first admin, created on boot if missing
@@ -74,7 +43,8 @@ services:
     name: techneeds-web
     runtime: node
     region: singapore
-    plan: starter
+    plan: free
+    branch: reimagathon
     rootDir: frontend
     buildCommand: npm ci && npm run build
     startCommand: npm start
@@ -90,6 +60,7 @@ services:
   - type: workflow
     name: techneeds-workflows
     runtime: node
+    branch: reimagathon
     region: singapore
     rootDir: backend
     buildCommand: npm ci --omit=dev
@@ -97,20 +68,7 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20.19.0
-      - key: MONGO_HOST
-        fromService:
-          name: techneeds-mongo
-          type: pserv
-          property: host
-      - key: MONGO_USER
-        fromService:
-          name: techneeds-mongo
-          type: pserv
-          envVarKey: MONGO_INITDB_ROOT_USERNAME
-      - key: MONGO_PASSWORD
-        fromService:
-          name: techneeds-mongo
-          type: pserv
-          envVarKey: MONGO_INITDB_ROOT_PASSWORD
+      - key: MONGO_URI
+        sync: false
       - key: GEMINI_API_KEY
         sync: false
