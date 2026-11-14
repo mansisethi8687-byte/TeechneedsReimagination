@@ -323,11 +323,27 @@ describe('API and runners (seeded cohort)', () => {
     }
   });
 
-  test('GET returns the latest ready profile and the pipeline in use', async () => {
+  test('GET returns current marks even when saved AI profiles predate the marks feature', async () => {
+    await ProfileSnapshot.updateMany({}, { $unset: { 'facts.mentorMarks': 1 } });
     const r = await api().get(`/api/profile/mentee/${aanya.mentee._id}`).set(auth(aanya.token));
     assert.equal(r.body.latest.status, 'ready');
+    assert.equal(r.body.performance.weeks.length, 4);
+    assert.ok(r.body.performance.marks.some(m => m.score === 180 && m.maxScore === 200));
     assert.equal(r.body.canGenerate, true);
     assert.deepEqual(r.body.pipeline, { runner: 'in-process', engine: 'rules', local: false });
     assert.ok(await ProfileSnapshot.countDocuments() >= 5, 'history kept');
   });
+});
+
+test('mentor marks include zero and reviews without feedback, but never pending projects', () => {
+  const f = menteeFacts({ mentee: { name: 'Learner', completedResources: [
+    {resource:'p1',score:0,verified:true,verifiedAt:d(-2)},
+    {resource:'p2',score:200,verified:false,submittedOn:d(-1)},
+  ]}, resources, now:NOW });
+  assert.equal(f.mentorMarks.length,1);
+  assert.equal(f.mentorMarks[0].score,0);
+  assert.equal(f.mentorMarks[0].percentage,0);
+  assert.equal(f.mentorMarks[0].feedback,'');
+  assert.equal(f.projects.pendingReview,1);
+  assert.equal(f.activity.weeks.reduce((sum,w)=>sum+w.points,0),0);
 });

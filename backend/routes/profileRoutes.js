@@ -72,8 +72,11 @@ router.get('/:kind/:id', anyRole, async (req, res) => {
     ProfileSnapshot.findOne({ subjectKind: req.params.kind, subject: subject._id, status: 'ready' }).sort({ createdAt: -1 }),
     ProfileSnapshot.findOne({ subjectKind: req.params.kind, subject: subject._id, status: { $in: ['queued', 'running'] } }).sort({ createdAt: -1 }),
   ]);
+  // Current marks do not depend on when the AI summary was last generated.
+  const current = req.params.kind === 'mentee' ? (await loadFacts('mentee', subject._id)).facts : null;
   const wf = workflowConfig();
   res.json({
+    performance: current ? { marks: current.mentorMarks, weeks: current.activity.weeks, pending: current.projects.pendingReview } : null,
     subject: { id: subject._id, name: subject.name, kind: req.params.kind },
     canGenerate,
     self,

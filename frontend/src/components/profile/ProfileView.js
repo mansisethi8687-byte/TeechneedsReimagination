@@ -13,6 +13,8 @@ import { EmptyState, ErrorState } from "@/components/ui/EmptyState";
 import { PageSkeleton, Skeleton } from "@/components/ui/Skeleton";
 import { cn } from "@/lib/cn";
 
+import { LearnerPerformance } from "./LearnerPerformance";
+
 const POLL_MS = 1500;
 const POLL_LIMIT_MS = 200000; // Gemini model chain can take up to ~2 minutes
 
@@ -202,6 +204,7 @@ export function ProfileView({ kind, id, subtitle }) {
   if (!snap) {
     return (
       <div className="space-y-4">
+        {kind === "mentee" && <LearnerPerformance data={state.data.performance} />}
         {runningNote}
         {!busy && (
           <Card>
@@ -265,6 +268,7 @@ export function ProfileView({ kind, id, subtitle }) {
       </Card>
 
       <Evidence items={evidence} />
+      {isMentee && <LearnerPerformance data={state.data.performance} />}
 
       {/* Narrative */}
       <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-4 items-start [&>*]:min-w-0">

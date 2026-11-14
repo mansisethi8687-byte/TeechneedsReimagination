@@ -122,6 +122,11 @@ function menteeFacts({ mentee, resources, quizSubs = [], standing = null, progra
     interests,
     interestsCovered: interests.filter((i) => topicNames.has(i)),
     interestsUncovered: interests.filter((i) => !topicNames.has(i)),
+    mentorMarks: reviewed.map(({ c, r }) => ({
+      resourceId: id(r), title: r.title, score: c.score ?? 0, maxScore: r.maxScore,
+      percentage: pct(c.score ?? 0, r.maxScore), feedback: c.feedback || '',
+      reviewedAt: c.verifiedAt || null,
+    })).sort((a, b) => new Date(a.reviewedAt || 0) - new Date(b.reviewedAt || 0) || a.resourceId.localeCompare(b.resourceId)),
     feedback,
     open,
   };
