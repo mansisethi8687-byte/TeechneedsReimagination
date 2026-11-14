@@ -8,7 +8,7 @@ export function DataTable({ columns, rows, rowKey = (r) => r._id || r.id, empty,
   const cell = (c, r) => (c.render ? c.render(r) : r[c.key]);
   return (
     <div className={className}>
-      <table className="hidden sm:table w-full text-sm">
+      <table className="tn-table hidden sm:table w-full text-sm">
         <thead>
           <tr className="text-left text-[13px] text-muted border-b border-line">
             {columns.map((c) => <th key={c.key} scope="col" className={cn("font-medium py-2.5 px-5 first:pl-5", c.className)}>{c.header}</th>)}

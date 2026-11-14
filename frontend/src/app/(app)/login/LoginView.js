@@ -1,4 +1,6 @@
 "use client";
+import Image from "next/image";
+import brandLogo from "@/assets/logo.png";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, Eye, EyeOff, Sparkles } from "lucide-react";
@@ -44,7 +46,7 @@ function LiveStats() {
   return (
     <div>
       <p className="inline-flex items-center gap-2 text-[13px] text-signal">
-        <LiveDot /> Live from the TechNeeds API
+        <LiveDot /> Live on TechNeeds
       </p>
       <dl className="mt-4 grid grid-cols-3 gap-4 max-w-md">
         {items.map(([n, label]) => (
@@ -107,24 +109,21 @@ export default function LoginView() {
   const copy = COPY[role];
 
   return (
-    <div className="min-h-dvh grid lg:grid-cols-[1.1fr_1fr]">
+    <div className="tn-login min-h-dvh grid lg:grid-cols-[1.1fr_1fr]">
       {/* Brand side */}
-      <section className="relative hidden lg:flex flex-col justify-between p-12 border-r border-line overflow-hidden">
+      <section className="tn-login-brand relative hidden lg:flex flex-col justify-between p-12 border-r border-line overflow-hidden">
         <Logo />
-        <div className="relative max-w-lg">
+        <div className="relative max-w-lg tn-login-story">
+          <div className="tn-login-emblem"><Image src={brandLogo} alt="TechNeeds" width={120} height={120} priority /></div>
           <p className="text-[13px] text-muted">TechNeeds IGDTUW · cohort mentorship</p>
           <h1 className="tn-display text-[clamp(2.25rem,3.6vw,3rem)] text-paper mt-4">
-            Videos, quizzes and projects. Deadlines, reviews and a live ranking.
+            Your next chapter.<br />Built together.
           </h1>
           <p className="text-muted text-[16px] mt-5 max-w-md">
-            Mentors publish the work and score it. Mentees complete it before the deadline and see exactly where they stand.
+            A place to turn curiosity into capability. Learn with your cohort, build something real, and grow with people who care.
           </p>
         </div>
         <LiveStats />
-        {/* Quiet structural lines, no glow. */}
-        <svg aria-hidden className="absolute -right-24 top-1/2 -translate-y-1/2 w-[520px] text-line-strong" viewBox="0 0 400 400" fill="none">
-          {[60, 100, 140, 180].map((r) => <circle key={r} cx="200" cy="200" r={r} stroke="currentColor" />)}
-        </svg>
       </section>
 
       {/* Form side */}
@@ -135,9 +134,10 @@ export default function LoginView() {
         </div>
 
         <div className="flex-1 flex items-center justify-center py-10">
-          <div className="w-full max-w-sm">
-            <h2 className="tn-display text-[26px] text-paper">Sign in</h2>
-            <p className="text-muted text-sm mt-1.5">Choose how you&apos;re part of TechNeeds.</p>
+          <div className="tn-login-form w-full max-w-sm">
+            <p className="tn-login-eyebrow">YOUR TECHNEEDS WORKSPACE</p>
+            <h2 className="tn-display text-[32px] text-paper">Welcome back.</h2>
+            <p className="text-muted text-sm mt-1.5">Choose your role. Pick up where you left off.</p>
 
             <Tabs items={ROLES} value={role} onChange={switchRole} label="Sign in as" className="mt-6 w-full [&>button]:flex-1" />
 
@@ -167,7 +167,7 @@ export default function LoginView() {
                       required
                     />
                     <button type="button" onClick={() => setShow((s) => !s)}
-                      className="absolute right-1 top-1/2 -translate-y-1/2 size-8 grid place-items-center rounded-md text-muted hover:text-paper"
+                      className="absolute right-1 top-1/2 -translate-y-1/2 size-10 grid place-items-center rounded-md text-muted hover:text-paper"
                       aria-label={show ? "Hide password" : "Show password"} aria-pressed={show}>
                       {show ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                     </button>

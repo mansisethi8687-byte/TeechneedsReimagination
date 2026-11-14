@@ -149,3 +149,38 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Shared product interiors: quiet surfaces, crisp hierarchy, TechNeeds identity. */
+.tn-workspace { background: var(--ink); }
+.tn-sidebar { background: linear-gradient(160deg,var(--ink-2),var(--ink)); }
+.tn-workspace-label { margin: 40px 12px 0; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); }
+.tn-nav-active { box-shadow: inset 3px 0 var(--accent); }
+.tn-workspace-context { display:flex; align-items:center; gap:12px; max-width:1120px; margin:0 auto 36px; padding-bottom:18px; border-bottom:1px solid var(--line); color:var(--muted); font-size:12px; }
+.tn-workspace-context a { color:var(--paper); font-weight:600; }
+.tn-context-note { margin-left:auto; }
+.tn-page-header { position:relative; padding-bottom:24px; border-bottom:0; }
+.tn-page-header h1 { letter-spacing:-.035em; line-height:1.18; }
+.tn-surface { box-shadow:0 4px 24px #00000006; }
+.tn-stat { position:relative; background:linear-gradient(145deg,var(--ink-2),var(--ink)); border-radius:16px; }
+.tn-stat::before { content:''; display:block; width:24px; height:3px; background:var(--line-strong); border-radius:2px; margin-bottom:18px; }
+.tn-stat .tn-num { font-size:36px; letter-spacing:-.045em; }
+.tn-table thead { background:var(--ink-3); }
+.tn-table th { font-size:11px; letter-spacing:.055em; text-transform:uppercase; padding-top:14px; padding-bottom:14px; }
+.tn-table td { padding-top:17px; padding-bottom:17px; }
+.tn-workspace input,.tn-workspace select,.tn-login input { min-height:46px; }
+.tn-workspace button,.tn-workspace a,.tn-login button { transition:background-color .18s,border-color .18s,color .18s; }
+.tn-workspace :focus-visible,.tn-login :focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+.tn-skip-link { position:fixed; top:8px; left:8px; transform:translateY(-150%); z-index:100; padding:12px; background:var(--paper); color:var(--ink); border-radius:8px; }
+.tn-skip-link:focus { transform:none; }
+.tn-login-brand { background:radial-gradient(ellipse at 30% 35%,var(--accent-soft),transparent 65%),var(--ink-2); }
+.tn-login-story { padding:36px 0; }
+.tn-login-story h1 { letter-spacing:-.045em; line-height:1.08; }
+.tn-login-emblem { width:154px; height:154px; display:grid; place-items:center; border-radius:36px; margin-bottom:38px; background:linear-gradient(135deg,#fff,#cbd8e8); border:1px solid #fff; box-shadow:10px 14px 0 #1b3763,20px 28px 60px #0003; transform:perspective(700px) rotateY(-14deg) rotateX(8deg); }
+.tn-login-emblem img { width:110px; height:110px; object-fit:contain; }
+.tn-login-eyebrow { font-size:10px; letter-spacing:.15em; color:var(--muted); font-weight:600; margin-bottom:16px; }
+.tn-login-form { max-width:420px; }
+.tn-login-form form { margin-top:28px; gap:20px; }
+.tn-login-form [role=tablist] { padding:6px; }
+.tn-login-form [role=tab] { height:40px; }
+@media(max-width:639px) { .tn-context-note { display:none; } .tn-workspace-context { margin-bottom:24px; } .tn-stat .tn-num { font-size:30px; } .tn-stat::before { margin-bottom:12px; } }
+@media(prefers-reduced-motion:reduce) { .tn-workspace *, .tn-login * { transition:none!important; } }

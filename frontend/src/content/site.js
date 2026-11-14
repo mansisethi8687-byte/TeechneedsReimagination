@@ -37,6 +37,13 @@ export const cohorts = [
 
 export const glimpseImage = glimpse;
 
+// Instagram is cross-linked from TechNeeds' official LinkedIn INNOVORTEX post.
+// Both destinations verified on 2026-11-13; keep the final Instagram underscore.
+export const socials = [
+  { name: "Instagram", handle: "@techneeds_igdtuw_", href: "https://www.instagram.com/techneeds_igdtuw_/" },
+  { name: "LinkedIn", handle: "TechNeeds IGDTUW", href: "https://www.linkedin.com/company/techneeds-igdtuw/" },
+];
+
 export const faqs = [
   { q: "What is TechNeeds?", a: "TechNeeds is the technical community at IGDTUW, built around peer-to-peer learning, mentorship and skill development: all you need to know about tech." },
   { q: "How can I contact support?", a: "You can contact support via our official WhatsApp group or email us at techneedsigdtuw@gmail.com." },

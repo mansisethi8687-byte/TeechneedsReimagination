@@ -20,7 +20,7 @@ export function Dialog({ open, onClose, title, description, children, footer, si
       onCancel={(e) => { e.preventDefault(); if (dismissible) onClose?.(); }}
       onClick={(e) => { if (dismissible && e.target === ref.current) onClose?.(); }}
       className={cn(
-        "m-auto w-[calc(100%-2rem)] p-0 rounded-[16px] border border-line-strong bg-ink-2 text-paper shadow-2xl",
+        "m-auto w-[calc(100%-2rem)] p-0 rounded-[20px] border border-line-strong bg-ink-2 text-paper shadow-2xl",
         "backdrop:bg-black/60 backdrop:backdrop-blur-[2px]",
         size === "lg" ? "max-w-2xl" : size === "sm" ? "max-w-sm" : "max-w-lg",
       )}
@@ -34,7 +34,7 @@ export function Dialog({ open, onClose, title, description, children, footer, si
               {description && <p className="text-sm text-muted mt-1">{description}</p>}
             </div>
             {dismissible && (
-              <button onClick={onClose} className="text-muted hover:text-paper -mr-1 p-1" aria-label="Close">
+              <button onClick={onClose} className="text-muted hover:text-paper -mr-1 size-11 grid place-items-center rounded-xl hover:bg-ink-3" aria-label="Close">
                 <X className="size-5" />
               </button>
             )}

@@ -102,3 +102,29 @@ reveal, copy, "shown once") · `Skeleton` · `Avatar` (generative) · `Tabs`.
 
 Plain and specific: "Due Thu · in 2 days", "Scored 18 of 20", "Generated from 7 completed
 resources". No "universe", "unleash" or "supercharge". No fake marketing stats.
+
+## Public homepage refresh — November 2026
+
+Current public homepage uses IBM Plex Sans only, with 500-weight editorial headings,
+image-led cohort links, alternating two-column/text sections, and native FAQ disclosures.
+The older portfolio typography table above is historical, not an implementation guide.
+
+A custom SVG learning-path illustration explains Learn / Build / Grow using real platform
+capabilities. It does not represent an individual learner or fabricate progress. Blue marks
+the selected interactive stage. Intro motion lasts at most three seconds; section entrances
+follow scrolling where supported. Reduced-motion disables all added animation. No animation
+library, video, additional font or backend dependency was added. Styling is homepage-scoped.
+All existing testimonials remain accessible, with additional stories in a disclosure.
+
+## Premium revision 2 — supersedes the first public refresh
+
+The user requested a substantially bolder direction using Apple, CRED, Linear, Stripe and
+Duolingo as references. Public pages now use cinematic artwork, large Plex Sans headlines,
+a distinct light cohort explorer, tactile interactions, and contrasting editorial sections.
+The previous no-depth/no-gradient guideline remains appropriate for workspaces; campaign
+art and public presentation intentionally introduce material depth and selective gradients.
+
+Implementation: `components/site/premium.module.css`, `PremiumExperience.js`, and
+`siteChrome.module.css`. Brand art colors are local to campaign sections. The live data
+components continue using semantic theme tokens. Motion can be paused and respects OS
+reduced-motion. See `docs/PREMIUM_DESIGN_NOTES.md` for sources, original artwork and scope.

@@ -70,17 +70,19 @@ export function AppShell({ role, allowAnonymous = false, children }) {
   };
 
   return (
-    <div className="min-h-dvh lg:grid lg:grid-cols-[248px_1fr]">
+    <div className="tn-workspace min-h-dvh lg:grid lg:grid-cols-[248px_1fr]">
+      <a href="#workspace-content" className="tn-skip-link">Skip to workspace</a>
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex flex-col sticky top-0 h-dvh border-r border-line bg-ink px-4 py-5">
+      <aside className="tn-sidebar hidden lg:flex flex-col sticky top-0 h-dvh border-r border-line bg-ink px-4 py-5">
         <Logo href={session ? ROLE_HOME[session.role] : "/"} className="px-1" />
-        <nav className="mt-8 flex flex-col gap-0.5" aria-label="Main">
+        <div className="tn-workspace-label">{session ? ROLE_LABEL[session.role] : "TechNeeds"} workspace</div>
+        <nav className="mt-4 flex flex-col gap-0.5" aria-label="Main">
           {nav.map((item) => {
             const active = isActive(pathname, item);
             return (
               <Link key={item.href} href={item.href} aria-current={active ? "page" : undefined}
                 className={cn("flex items-center gap-3 h-10 px-3 rounded-[10px] text-sm transition",
-                  active ? "bg-ink-3 text-paper font-medium" : "text-muted hover:text-paper hover:bg-ink-3/60")}>
+                  active ? "bg-accent-soft text-paper font-medium tn-nav-active" : "text-muted hover:text-paper hover:bg-ink-3/60")}>
                 <item.icon className={cn("size-[18px]", active && "text-accent")} aria-hidden />
                 {item.label}
               </Link>
@@ -119,7 +121,8 @@ export function AppShell({ role, allowAnonymous = false, children }) {
         </div>
       </header>
 
-      <main className="min-w-0 px-4 sm:px-6 lg:px-10 py-6 lg:py-10 pb-28 lg:pb-12">
+      <main id="workspace-content" tabIndex={-1} className="tn-workspace-main min-w-0 px-4 sm:px-6 lg:px-10 py-6 lg:py-10 pb-28 lg:pb-12">
+        <div className="tn-workspace-context"><Link href="/">TechNeeds</Link><span aria-hidden>/</span><span>{nav.find((item) => isActive(pathname, item))?.label || "Workspace"}</span><span className="tn-context-note">Learn. Build. Belong.</span></div>
         <div className="mx-auto max-w-[1120px]">
           {anonymous ? children : <RequireRole roles={roles} fallback={<PageSkeleton />}>{children}</RequireRole>}
         </div>
@@ -148,7 +151,7 @@ export function AppShell({ role, allowAnonymous = false, children }) {
 
 export function PageHeader({ eyebrow, title, description, action }) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 pb-6 border-b border-line">
+    <div className="tn-page-header flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 pb-6 border-b border-line">
       <div className="min-w-0">
         {eyebrow && <div className="text-[13px] text-muted mb-2 flex flex-wrap items-center gap-2">{eyebrow}</div>}
         <h1 className="tn-display text-[26px] sm:text-[30px] text-paper">{title}</h1>

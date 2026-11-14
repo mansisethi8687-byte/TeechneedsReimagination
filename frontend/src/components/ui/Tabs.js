@@ -8,7 +8,15 @@ export function Tabs({ items, value, onChange, className, label = "Sections" }) 
       {items.map((it) => {
         const active = it.id === value;
         return (
-          <button key={it.id} role="tab" aria-selected={active} onClick={() => onChange(it.id)}
+          <button key={it.id} role="tab" aria-selected={active} tabIndex={active ? 0 : -1}
+            onKeyDown={(event) => {
+              const index = items.findIndex((item) => item.id === it.id);
+              const next = event.key === "ArrowRight" ? (index + 1) % items.length : event.key === "ArrowLeft" ? (index - 1 + items.length) % items.length : event.key === "Home" ? 0 : event.key === "End" ? items.length - 1 : null;
+              if (next === null) return;
+              event.preventDefault();
+              onChange(items[next].id);
+              event.currentTarget.parentElement.querySelectorAll('[role="tab"]')[next]?.focus();
+            }} onClick={() => onChange(it.id)}
             className={cn("h-8 px-3 rounded-lg text-[13px] font-medium whitespace-nowrap transition",
               active ? "bg-ink-2 text-paper shadow-sm border border-line" : "text-muted hover:text-paper")}>
             {it.label}
