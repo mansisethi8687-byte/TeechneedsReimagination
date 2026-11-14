@@ -120,21 +120,6 @@ function TopicBars({ topics, kind }) {
   );
 }
 
-function WeekBars({ weeks }) {
-  const max = Math.max(1, ...weeks.map((w) => w.points));
-  return (
-    <div className="flex items-end gap-3 h-28" role="img" aria-label={`Points per week: ${weeks.map((w) => w.points).join(", ")}`}>
-      {weeks.map((w, i) => (
-        <div key={w.weekEnding} className="flex-1 flex flex-col items-center gap-1.5 min-w-0">
-          <span className="text-[12px] tn-num text-paper">{w.points}</span>
-          <div className="w-full rounded-t-md bg-accent" style={{ height: `${Math.max(3, (w.points / max) * 72)}px`, opacity: i === weeks.length - 1 ? 1 : 0.55 }} />
-          <span className="text-[11px] text-muted whitespace-nowrap">{i === weeks.length - 1 ? "This week" : `${weeks.length - 1 - i}w ago`}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function recLink(kind, viewerIsSelf, r) {
   if (!r.resourceId) return null;
   if (kind === "mentee" && viewerIsSelf) return `/dashboard/resources/${r.resourceId}`;
@@ -336,28 +321,6 @@ export function ProfileView({ kind, id, subtitle }) {
           ) : <CardBody className="pt-3 text-sm text-muted">No badges yet. They unlock from completed work.</CardBody>}
         </Card>
       </div>
-
-      {isMentee && (
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-4 items-start [&>*]:min-w-0">
-          <Card>
-            <CardHeader title="Points per week" description={`${f.activity.activeDays14} active days in the last two weeks · ${f.activity.streak}-day streak`} />
-            <CardBody className="pt-4"><WeekBars weeks={f.activity.weeks} /></CardBody>
-          </Card>
-          <Card>
-            <CardHeader title="Mentor feedback" description="From reviewed projects. Used as input to the summary." />
-            {f.feedback.length ? (
-              <ul className="divide-y divide-line mt-3 border-t border-line">
-                {f.feedback.map((fb) => (
-                  <li key={fb.title} className="px-5 py-3">
-                    <p className="text-paper">{fb.title} <span className="text-[13px] text-signal tn-num ml-1">{fb.score}/{fb.maxScore}</span></p>
-                    <p className="text-sm text-muted mt-1 flex gap-2"><MessageSquareText className="size-4 shrink-0 mt-0.5" aria-hidden />{fb.text}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : <CardBody className="pt-3 text-sm text-muted">No written feedback yet.</CardBody>}
-          </Card>
-        </div>
-      )}
 
       <details className="rounded-[14px] border border-line bg-ink-2 px-5 py-4 text-sm text-muted">
         <summary className="cursor-pointer text-paper">How this profile was made</summary>
